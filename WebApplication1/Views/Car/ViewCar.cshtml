@@ -1,0 +1,228 @@
+@model CarAndImg
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/ViewCAr.css">
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+
+<body>
+
+    <div class="section-car">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 fisrt-start">
+                    <h1>@Model.MyCar.Company @Model.MyCar.Model</h1>
+
+                </div>
+                <div class="col-lg-8 col-sm-12">
+                </div>
+            </div>
+            <div class="section-view">
+                <div class="row imge&pro gx-4 gy-3">
+                    <div class="col-lg-7 col-sm-12 view-imge">
+                        <!-- img slider -->
+
+                        <div class="slider-wrapper">
+                            <div class="slider">
+                                <img id="slide-1" src="@Model.MyCar.ImageUrl" alt="">
+
+                                @for (int i = 0; i < Model.MyCarImge.Count; i++)
+                                {
+                                    <img src="@Model.MyCarImge[i].ImageUrl" id="slide-@((i + 2).ToString())" alt="">
+                                }
+                            </div>
+
+                            <div class="slider-nav" style="direction: rtl;">
+                                <a class="alin active" href="#slide-1">
+                                    <img src="@Model.MyCar.ImageUrl" alt="">
+                                </a>
+
+                                @for (int i = 0; i < Model.MyCarImge.Count; i++)
+                                {
+                                    <a class="alin " href="#slide-@((i + 2).ToString())">
+                                        <img src="@Model.MyCarImge[i].ImageUrl" alt="">
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+
+                        <!-- end img slider -->
+                        <div class="more-info">
+                            <div class="row">
+                                <div class="col car-price">
+                                    <h2>@Model.MyCar.Price <span style="color:red;">US</span></h2>
+                                </div>
+                                <div class="col">
+                                    <h4>ممشى السيارة @Model.MyCar.Mileage km </h4>
+                                    <h4>صنعت عام: @Model.MyCar.DateOfMade</h4>
+                                    <h4>اللون @Model.MyCar.Color</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>ناقل حركة @Model.MyCar.Transmission</h4>
+                                    <h4>فرامل @Model.MyCar.Brakes </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-sm-12 car-booking">
+                        <div class="set-booking">
+                            <div class="col-lg-6 col-sm-12">
+                                <form id="bookingForm" class="bookingform">
+                                    <input type="text" id="userName" placeholder="أدخل اسمك" required>
+                                    <input type="text" id="phoneNumber" placeholder="أدخل رقم هاتفك" required>
+                                    <input type="text" id="cityName" placeholder="اسم مدينتك" required>
+                                    <h3>سيتم تحويلك عبر رسالة جاهزة باسم السيارة إلى واتس أب المبيعات</h3>
+                                    <button type="submit" class="btn btn-primary">احجز الان</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row car-description">
+                <h2>@Model.MyCar.Description</h2>
+            </div>
+
+            <div class="row price-booking">
+                <div class="col-lg-6 col-sm-12 pro-icon">
+                    <div class="row ">
+                        <div class="col-2">
+                            <i class="fa-solid fa-tachometer-alt"></i>
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Engine</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-cogs"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Transmission</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-car-side"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>تحكم كهرباء كامل</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fas fa-gas-pump"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.FuelConsumption</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-chair"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Seats</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-hand-paper"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Brakes</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-key"></i>
+
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Key</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="col-10">
+                            <h3>@Model.MyCar.Lights</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-sm-12 office-col">
+                    <div class="office">
+                    <img class="ofimg" src="~/Image/Annotation 2025-02-12 032336.png" alt="">
+                    <h3>تفضل بزيارة مكتبنا, الموقع على الخريطة بالتفصيل</h3>
+                    <a class="btn btn-primary">عرض على الخريطة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    var slidernav = document.getElementsByClassName('slider-nav')[0];
+    var links = slidernav.getElementsByClassName('alin');
+
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function () {
+            var active = document.querySelector('.slider-nav .active');
+            if (active) active.classList.remove('active');
+            this.classList.add('active');
+        });
+    }
+
+    // إرسال المعلومات عند الضغط على احجزالان
+
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // منع إعادة تحميل الصفحة
+
+    // جمع بيانات النموذج
+    const userName = document.getElementById('userName').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const cityName = document.getElementById('cityName').value;
+
+    // الحصول على رابط الصفحة الحالية
+    const currentPageUrl = window.location.href;
+
+    // نص الرسالة
+    const message = `الاسم: ${userName}\nرقم الهاتف: ${phoneNumber}\nالمدينة: ${cityName}\nرابط الصفحة: ${currentPageUrl}`;
+
+    // رقم واتساب الهدف
+    const targetNumber = '0959990728';
+
+    // إنشاء رابط واتساب
+    const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`;
+
+    // فتح الرابط في نافذة جديدة
+    window.open(whatsappUrl, '_blank');
+});
+
+
+</script>
+
+</html>

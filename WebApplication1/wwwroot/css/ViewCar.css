@@ -1,0 +1,262 @@
+:root {
+    --primary-color: #150578;
+    --secondary-color: #f3fcf0;
+    --button-color: #23b5d3;
+    --button-hover-color: #1c5ca4;
+    --on-hover-color: #a5e4f1;
+    --Bright-color: #ff9500;
+    --font-color: #434a42;
+    --hover-color: #cecece;
+    --most-color: white;
+}
+
+body {
+    padding-top: 10vh;
+}
+
+.slider-wrapper {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0. 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+    scrollbar-width: none;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+.slider-nav {
+    display: flex;
+    column-gap: 5px;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    display: flex;
+    align-items: center;
+    opacity: 0.90;
+    transition: opacity ease 250ms;
+}
+
+.slider-nav a img {
+    flex: 1 0 100%;
+    object-fit: cover;
+    width: 6vw;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+.slider-nav .active {
+    opacity: 1;
+    border: 2px solid var(--Bright-color);
+}
+
+.more-info {
+    margin: 2vh 0;
+    background-color: var(--hover-color);
+    padding: 2vh;
+}
+
+.more-info .car-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.more-info h4 {
+    font-size: small;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5vh 1vh;
+}
+
+
+.car-description {
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    margin: 5vh 0;
+    padding: 3vh;
+}
+
+.car-description h2 {
+    margin: 0;
+}
+
+
+/* pro-icon styling */
+.pro-icon {
+    margin: 2vh 0;
+}
+
+.pro-icon i {
+    padding: 1vh;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--most-color);
+    background-color: var(--primary-color);
+}
+
+.pro-icon .col-2 {
+    background-color: var(--hover-color);
+
+}
+
+.pro-icon .col-10 {
+    display: flex;
+    align-items: center;
+    background-color: var(--hover-color);
+}
+
+.pro-icon h3 {
+    font-size: 20px;
+}
+
+
+
+/* booking form */
+
+/* تنسيق العنصر الرئيسي */
+.set-booking {
+    display: flex;
+    border: 1px var(--hover-color) solid;
+    border-radius: 10px;
+    padding: 2vh;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    height: fit-content;
+    /* margin-left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/Image/cars-road-objects-traffic-signs-and-automobile-symbols-seamless-pattern-in-doodle-style-illustration-vector.jpg'); */
+    background-color: var(--primary-color);
+}
+
+/* تنسيق الأعمدة */
+.set-booking .col-lg-6 {
+    flex: 1 1 45%;
+    /* يجعل كل عمود يأخذ 45% من المساحة */
+    min-width: 300px;
+    /* الحد الأدنى للعرض */
+}
+
+/* تنسيق الفورم */
+.bookingform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* المسافة بين عناصر الفورم */
+}
+
+.bookingform input {
+    padding: 10px;
+    border: 1px solid var(--hover-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    /* إزالة الحدود الزرقاء عند النقر */
+}
+
+.bookingform input:focus {
+    border-color: var(--button-hover-color);
+    /* تغيير لون الحدود عند التركيز */
+}
+
+.bookingform button {
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bookingform button:hover {
+    background-color: var(--button-hover-color);
+    /* تغيير اللون عند التمرير */
+}
+
+/* تنسيق النص */
+.bookingform h3 {
+    font-size: 25px;
+    color: var(--Bright-color);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 2px 0px var(--most-color);
+}
+
+/* office map */
+.office {
+    margin: 2vh 0;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--hover-color);
+    border-radius: 15px;
+    background: var(--hover-color);
+}
+
+.office-col {
+    display: flex;
+    justify-content: left;
+}
+
+
+.office .ofimg {
+    margin: 1vh;
+    width: 90%;
+    height: auto;
+}
+
+.office .btn {
+    margin: 2vh auto;
+    width: 90%;
+    background: var(--Bright-color);
+    border-color: var(--hover-color);
+    font-weight: bold;
+    font-size: larger;
+}
+
+@media (max-width: 768px) {
+    .col-lg-6 {
+        flex: 1 1 100%;
+    }
+
+    .slider-nav a img {
+        width: 11vw;
+        height: auto;
+    }
+
+    .bookingform h3 {
+        font-size: 16px;
+    }
+}

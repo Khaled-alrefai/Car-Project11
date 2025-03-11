@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/wwwroot/Login.css">
+</head>
+
+<body>
+    <div class="loginform">
+        <div class="container">
+            <form action="/Home/Loginpage" method="post">
+                <h2>تسجيل الدخول</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="username">أدخل اسمك:</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" name="username" id="username" placeholder="اسم المستخدم" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="password">أدخل كلمة السر:</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="password" name="password" id="password" placeholder="كلمة السر" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="تسجيل الدخول" class="btn-submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+﻿@model List<Car>
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+<body>
+
+    <div class="section-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-9">
+                    <img src="~/Image/2023-Mercedes-Benz-GLC(1)(1).png" alt="" class="main-img img-fluid">
+                </div>
+
+<div class="col-6 filter-de text-center mb-4">
+    <i class="fas fa-filter"></i>
+    <h2 class="custom-heading">
+        ابحث بسهولة عن سيارتك المثالية من خلال التصفية الذكية!
+    </h2>
+</div>
+
+<div class="col-lg-3 col-6 left-div d-flex flex-column justify-content-center">
+    <form asp-controller="Home" asp-action="Index" method="post" class="">
+        <div class="row text-center Filter-option mb-3">
+            @foreach (var brand in new[] { "mercedes", "toyota", "bmw", "chevrolet", "hyundai", "kia" })
+            {
+                <div class="col-4 mb-2">
+                    <label class="radio-label">
+                        <input type="radio" name="Option" value="@brand" hidden>
+                        <img src="~/Image/@(brand)-seeklogo.png" alt="@brand" class="img-fluid brand-logo">
+                    </label>
+                </div>
+            }
+        </div>
+
+        <div class="row mb-2 text-center">
+            <div class="col">
+                <strong>سعر يبدأ من :</strong> 
+                <span id="priceValue" class="text-primary">4200$</span> <!-- عرض القيمة المحددة -->
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12 d-flex justify-content-center">
+                <input type="range" id="priceRange" name="price" min="1000" max="25000" step="100" value="4200" class="w-100 custom-range">
+            </div>
+        </div>
+
+        <div class="row text-center mb-3">
+            <div class="col">1000$</div>
+            <div class="col">25000$</div>
+        </div>
+
+        <div class="row text-center">
+            <button type="submit" class="btn btn-primary custom-btn">اظهر النتائج</button>
+        </div>
+    </form>
+</div>
+            <div class="tabs mt-2 text-center">
+                @foreach (var filter in new[] { "NewArrive", "Featured", "Economical", "ForFamilies", "Recommended", "Cheap" })
+                {
+                    <div class="col-6 col-lg-2 col-md-4 col-sm-6">
+                        <a asp-controller="Home" asp-action="Index" asp-route-Filter="@filter">@filter</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="section-2">
+        <div class="container">
+            <div class="row g-4 card_container">
+                @foreach (var car in Model)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                        <div class="card car_card">
+                            <a asp-controller="Car" asp-action="ViewCar" asp-route-number="@car.CarNumber" class="a-card">
+                                <img src="@car.ImageUrl" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5>الشركة الأم: <span class="company">@car.Company</span></h5>
+                                    <h6>اسم الموديل: <span class="model">@car.Model</span></h6>
+                                    <h6>تقييم النظافة: <span class="gloss">@car.Condition</span></h6>
+                                    <p class="card-text car-description">@car.Description</p>
+                                    <div class="price">
+                                        <h3>@car.Price $</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!-- كود JavaScript لتحديث قيمة السلايدر -->
+<script defer>
+    const priceRange = document.getElementById("priceRange");
+    const priceValue = document.getElementById("priceValue");
+
+    priceRange.addEventListener("input", () => {
+        priceValue.textContent = `${priceRange.value}$`;
+    });
+</script>
+
+</html>

@@ -1,0 +1,245 @@
+@model Car
+
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manager</title>
+    <link rel="stylesheet" href="~/css/manager.css">
+    <link rel="stylesheet" href="~/css/site.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row all-car">
+@*              <h2>عرض كافة السيارات الموجودة</h2>
+             <button type="submit" class="btn btn-secondry do-action-btn">عرض الكل</button> *@
+        </div>
+
+        <div class="row crud-car">
+            <!-- creat new car -->
+            <div class="col-lg-6 col-sm-12">
+                <h2>أضف سيارة جديدة </h2>
+                <p>ادخل معلومات السيارة بدقة لضمان عرضها بشكل صحيح</p>
+                <form asp-action="AddNewCar" asp-controller="Manager" method="post">
+                    <!-- القسم الأول: المعلومات الأساسية -->
+                    <div class="form-group">
+                        <label for="carnumber">رقم السيارة:</label>
+                        <input type="text" id="carnumber" name="carnumber" placeholder="أدخل رقم السيارة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">الشركة المصنعة:</label>
+                        <input type="text" id="company" name="company" placeholder="أدخل اسم الشركة المصنعة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model">الموديل:</label>
+                        <input type="text" id="model" name="model" placeholder="أدخل موديل السيارة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateofmade">تاريخ الصنع:</label>
+                        <input type="date" id="dateofmade" name="dateofmade" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mileage">ممشى السيارة:</label>
+                        <input type="number" id="mileage" name="mileage" placeholder="أدخل ممشى السيارة بالكيلومترات" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">السعر:</label>
+                        <input type="number" id="price" name="price" step="0.1" placeholder="أدخل سعر السيارة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageurl">رابط الصورة الأساسية:</label>
+                        <input type="url" id="imageurl" name="imageurl" placeholder="أدخل رابط الصورة الأساسية" required>
+                    </div>
+
+                    <!-- القسم الثاني: المواصفات التقنية -->
+                    <div class="form-group">
+                        <label for="engine">المحرك:</label>
+                        <input type="text" id="engine" name="engine" placeholder="أدخل تفاصيل المحرك" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transmission">ناقل الحركة:</label>
+                        <input type="text" id="transmission" name="transmission" placeholder="أدخل نوع ناقل الحركة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="control">التحكم:</label>
+                        <input type="text" id="control" name="control" placeholder="أدخل نوع التحكم" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fuelconsumption">استهلاك الوقود:</label>
+                        <input type="text" id="fuelconsumption" name="fuelconsumption" placeholder="أدخل استهلاك الوقود" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="brakes">الفرامل:</label>
+                        <input type="text" id="brakes" name="brakes" placeholder="أدخل نوع الفرامل" required>
+                    </div>
+
+                    <!-- القسم الثالث: المظهر الخارجي -->
+                    <div class="form-group">
+                        <label for="color">اللون:</label>
+                        <input type="text" id="color" name="color" placeholder="أدخل لون السيارة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lights">المصابيح:</label>
+                        <input type="text" id="lights" name="lights" placeholder="أدخل تفاصيل المصابيح" required>
+                    </div>
+
+                    <!-- القسم الرابع: الوظائف المميزة -->
+                    <div class="form-group">
+                        <label for="seats">المقاعد:</label>
+                        <input type="text" id="seats" name="seats" placeholder="أدخل تفاصيل المقاعد" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="key">نظام التشغيل والمفاتيح:</label>
+                        <input type="text" id="key" name="key" placeholder="أدخل تفاصيل نظام التشغيل والمفاتيح" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">الحالة العامة:</label>
+                        <select id="condition" name="condition" required>
+                            <option value="" disabled selected>اختر الحالة</option>
+                            <option value="new">جديدة</option>
+                            <option value="used">مستعملة</option>
+                            <option value="good">جيدة</option>
+                            <option value="fair">متوسطة</option>
+                            <option value="poor">سيئة</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrivaltime">وقت الوصول:</label>
+                        <input type="date" id="arrivaltime" name="arrivaltime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="featured">مميزة:</label>
+                        <select id="featured" name="featured" required>
+                            <option value="true">نعم</option>
+                            <option value="false">لا</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="forfamilies">للعائلات:</label>
+                        <select id="forfamilies" name="forfamilies" required>
+                            <option value="true">نعم</option>
+                            <option value="false">لا</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recommended">موصى بها:</label>
+                        <select id="recommended" name="recommended" required>
+                            <option value="true">نعم</option>
+                            <option value="false">لا</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="economical">اقتصادية:</label>
+                        <select id="economical" name="economical" required>
+                            <option value="true">نعم</option>
+                            <option value="false">لا</option>
+                        </select>
+                    </div>
+
+                    <!-- القسم الأخير: الوصف العام -->
+                    <div class="form-group">
+                        <label for="description">الوصف:</label>
+                        <textarea id="description" name="description" rows="4" placeholder="أدخل وصف السيارة" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-addcar">أضف السيارة</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row crud-car">
+            <div class="col-lg-6 col-sm-12">
+                <h2>عرض سيارة موجودة</h2>
+
+                <form asp-action="GetCarDetails" asp-controller="Manager" method="get">
+                    <div class="form-group">
+                        <label for="car-number">رقم السيارة:</label>
+                        <input type="text" id="car-number" name="carnum" placeholder="أدخل رقم السيارة" required>
+                    </div>
+                    @* how *@
+                    @if (Model != null)
+                    {
+                        <img src="@Model.ImageUrl" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5>الشركة الأم: <span class="company">@Model.Company</span></h5>
+                            <h6>اسم الموديل: <span class="model">@Model.Model</span></h6>
+                            <h6>تقييم النظافة: <span class="gloss">@Model.Condition</span></h6>
+                            <p class="card-text car-description">@Model.Description</p>
+                            <div class="price">
+                                <h3>@Model.Price $</h3>
+                            </div>
+                            <form asp-action="DeleteCar" asp-controller="Manager" method="post">
+                                <input type="text" name="carnum" value="@Model.CarNumber" hidden />
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </div>
+                    }
+                    @* how *@
+                    @if (Model == null)
+                    {
+                        <button type="submit" class="btn btn-primary btn-readcar">اعرض السيارة</button>
+                    }
+
+                </form>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 ">
+                <h2>حذف سيارة موجودة</h2>
+                <form action="">
+                    <div class="form-group">
+                        <label for="car-number">رقم السيارة:</label>
+                        <input type="text" id="car-number" name="car-number" placeholder="أدخل رقم السيارة" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-deletecar">احذف السيارة</button>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="row all-admin">
+             @* <h2>عرض كافة المدراء الموجودين</h2>
+             <form action="">
+                 <button type="submit" class="btn btn-secondry do-action-btn">عرض الكل</button>
+             </form> *@
+        </div>
+        <div class="row crud-admin">
+            <div class="col-lg-6 col-sm-12 "></div>
+            <div class="col-lg-6 col-sm-12 "></div>
+        </div>
+        <div class="row crud-admin">
+
+            <div class="col-lg-6 col-sm-12 "></div>
+            <div class="col-lg-6 col-sm-12 "></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
